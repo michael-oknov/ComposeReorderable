@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.compose")
     id("org.jetbrains.kotlin.plugin.compose")
     id("maven-publish")
-    id("signing")
+ //   id("signing")
 }
 
 group = "org.burnoutcrew.composereorderable"
@@ -79,6 +79,6 @@ publishing {
     }
 }
 
-signing {
-    sign(publishing.publications)
-}
+//signing {
+//    sign(publishing.publications)
+//}
