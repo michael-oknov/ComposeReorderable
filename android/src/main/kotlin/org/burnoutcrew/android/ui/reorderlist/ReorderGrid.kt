@@ -29,8 +29,8 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -78,7 +78,7 @@ private fun HorizontalGrid(
                     modifier = Modifier
                         .shadow(elevation.value)
                         .aspectRatio(1f)
-                        .background(MaterialTheme.colors.secondary)
+                        .background(MaterialTheme.colorScheme.secondary)
                 ) {
                     Text(item.title)
                 }
@@ -107,7 +107,7 @@ private fun VerticalGrid(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier
                         .size(100.dp)
-                        .background(MaterialTheme.colors.surface)
+                        .background(MaterialTheme.colorScheme.surface)
                 ) {
                     Text(item.title)
                 }
@@ -120,7 +120,7 @@ private fun VerticalGrid(
                             .detectReorderAfterLongPress(state)
                             .shadow(elevation.value)
                             .aspectRatio(1f)
-                            .background(MaterialTheme.colors.primary)
+                            .background(MaterialTheme.colorScheme.primary)
                     ) {
                         Text(item.title)
                     }

@@ -1,11 +1,9 @@
-import org.jetbrains.compose.compose
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootExtension
 
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 repositories {
@@ -30,9 +28,10 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-                implementation(compose.web.core)
+                implementation(compose.html.core)
                 implementation(compose.runtime)
                 implementation(compose.material)
+                implementation(compose.materialIconsExtended)
                 implementation(project(":reorderable"))
             }
         }
@@ -42,10 +41,6 @@ kotlin {
             }
         }
     }
-}
-
-compose.experimental {
-    web.application {}
 }
 
 afterEvaluate {

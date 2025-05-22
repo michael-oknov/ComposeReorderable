@@ -1,15 +1,16 @@
-import org.jetbrains.compose.compose
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     kotlin("multiplatform")
     id("org.jetbrains.compose")
+    id("org.jetbrains.kotlin.plugin.compose")
 }
 
 kotlin {
     jvm {
-        compilations.all {
-            kotlinOptions.jvmTarget = "11"
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
     sourceSets {
@@ -17,6 +18,7 @@ kotlin {
             dependencies {
                 implementation(project(":reorderable"))
                 implementation(compose.desktop.currentOs)
+                implementation(compose.materialIconsExtended)
             }
         }
     }

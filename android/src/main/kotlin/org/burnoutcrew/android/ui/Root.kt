@@ -16,16 +16,17 @@
 package org.burnoutcrew.android.ui
 
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,6 +45,7 @@ import org.burnoutcrew.android.ui.reorderlist.ReorderList
 import org.burnoutcrew.android.ui.theme.ReorderListTheme
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Root() {
     ReorderListTheme {
@@ -87,11 +89,11 @@ private fun Navigation(navController: NavHostController, modifier: Modifier) {
 
 @Composable
 private fun BottomNavigationBar(items: List<NavigationItem>, navController: NavController) {
-    BottomNavigation(contentColor = Color.White) {
+    NavigationBar (contentColor = Color.White) {
         val navBackStackEntry = navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry.value?.destination?.route
         items.forEach { item ->
-            BottomNavigationItem(
+            NavigationBarItem(
                 icon = { Icon(item.icon, item.title) },
                 label = { Text(text = item.title) },
                 selected = currentRoute == item.route,
@@ -112,7 +114,7 @@ private fun BottomNavigationBar(items: List<NavigationItem>, navController: NavC
 }
 
 private sealed class NavigationItem(var route: String, var icon: ImageVector, var title: String) {
-    object Lists : NavigationItem("lists", Icons.Default.List, "Lists")
-    object Grids : NavigationItem("grids", Icons.Default.Settings, "Grids")
-    object Fixed : NavigationItem("fixed", Icons.Default.Star, "Fixed")
+    data object Lists : NavigationItem("lists", Icons.AutoMirrored.Filled.List, "Lists")
+    data object Grids : NavigationItem("grids", Icons.Default.Settings, "Grids")
+    data object Fixed : NavigationItem("fixed", Icons.Default.Star, "Fixed")
 }
