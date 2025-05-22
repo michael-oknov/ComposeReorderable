@@ -13,5 +13,5 @@ rootProject.name = "ComposeReorderList"
 include(":android")
 include(":desktop")
 include(":reorderable")
-include(":web")
+//include(":web")
 
